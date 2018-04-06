@@ -1,0 +1,16 @@
+.signup-container {
+    height: 40%;
+    width: 40%;
+    background: black;
+    opacity: 0.75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-btn, .login-btn {
+    margin: 10%;
+    height: 50px;
+    width: 75px;
+    
+}

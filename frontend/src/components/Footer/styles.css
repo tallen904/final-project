@@ -1,0 +1,25 @@
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: black;
+    height: 15vh;
+    width: 100%;
+    color: white;
+}
+
+.footer-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.footer-menu-item {
+    padding: 10px;
+}
+
+.copyright-text {
+    display: flex;
+    justify-content: center;
+}
