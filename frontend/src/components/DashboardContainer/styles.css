@@ -1,0 +1,30 @@
+.dashboard-container {
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border: 2px solid black;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.widget-row {
+    display: flex;
+    justify-content: space-around !important;
+}
+
+.dashboard-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-event-div {
+    display: flex;
+    justify-content: center;
+    margin-left: 25vw;
+    margin-right: 25vw;
+}
+
+.create-event-button {
+    width: 100%
+}

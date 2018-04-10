@@ -1,0 +1,10 @@
+[
+  {
+    "event": "Comic Con",
+    "date": "July 20th, 2018",
+    "location": "Downtown San Diego"
+  },
+  { "event": "Hike", "date": "May 18th, 2018", "location": "Los Angeles" },
+  { "event": "Kat's Old", "date": "April 8th, 2018", "location": "San Diego" },
+  { "event": "Conference", "date": "October 1st, 2018", "location": "San Francisco" }
+]
