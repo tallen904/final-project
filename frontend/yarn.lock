@@ -4067,7 +4067,8 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
-jquery@>=3.0.0:
+
+jquery@>=3.0.0, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
@@ -5624,6 +5625,10 @@ react-dom@^16.3.1:
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
+
+react-foundation-modal@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-foundation-modal/-/react-foundation-modal-0.1.5.tgz#cc866beb816093762e7cd3a7f17b8b8a41d5e0ad"
 
 react-foundation@^0.9.4:
   version "0.9.4"
