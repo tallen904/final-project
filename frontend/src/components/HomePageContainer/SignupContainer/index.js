@@ -1,13 +1,15 @@
 import React from 'react';
-import './styles.css'
+import './styles.css';
 
-const SignupContainer = () => {
-    return (
-        <div className='signup-container'>
-            <button className='signup-btn'>Signup</button>
-            <button className='login-btn'>Login</button>
-        </div>
-    );
-};
+class SignupContainer extends React.Component {
+	render() {
+		return (
+	        <div className='signup-container'>
+	            <button className='signup-btn' onClick={this.props.openSignupModal}>Signup</button>
+	            <button className='login-btn' onClick={this.props.openLoginModal}>Login</button>
+	        </div>
+	    );
+	};
+}
 
 export default SignupContainer;
