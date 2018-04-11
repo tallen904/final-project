@@ -1,66 +1,45 @@
-import React, { Component } from 'react';
-import Modal from 'react-foundation-modal'
-import { Foundation, Row, Column } from 'react-foundation'
+import React from "react";
+import Modal from "react-modal";
 
-
-class EventCreationModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalIsOpen: false,
-      event: '',
-
-    };
-  }
-
-  onSubmit = e => {
-    e.preventDefault();
-    alert(`username: ${this.state.username}`);
-  };
-
-  onChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  triggerModal = status => {
-    this.setState({ modalIsOpen: status });
-  };
-
+class EventCreationModal extends React.Component {
   render() {
     return <div>
-        <p>
-          <button className="button" onClick={() => this.triggerModal(true)}>
-            Click me for a modal
+        <Modal ariaHideApp={false} isOpen={this.props.eventModalIsOpen} onRequestClose={this.props.closeEventModal}>
+          <p>Hello World!</p>
+          <button className="close-button" onClick={this.props.closeEventModal} data-close="" aria-label="Close reveal" type="button">
+            <span aria-hidden="true">
+              <h2>&times;</h2>
+            </span>
           </button>
-        </p>
-        <Modal open={this.state.modalIsOpen} closeModal={this.triggerModal} isModal={true} size="large">
-          <h1>Event Creation</h1>
-          <form onSubmit={this.onSubmit}>
-            <div className="grid-basics-example">
-  <Row className="display">
-    <Column small={2} large={4}>4 columns</Column>
-    <Column small={4} large={4}>4 columns</Column>
-    <Column small={6} large={4}>4 columns</Column>
-  </Row>
-  </div>
-            <Row className='display'>
-              <Column small={2} large={6}>
-                <label>
-                  Event Title
-                  <input name="event" value={this.state.event} onChange={this.onChange} type="text" placeholder="Event" />
-                </label>
-              </Column>
-              <Column small={4} large={6}>
-                <p>Hello</p>
-              </Column>
-            </Row>
+          <form data-abide>
+            <label>
+              Amount
+              <div className="input-group">
+                <span className="input-group-label">$</span>
+                <input className="input-group-field" id="exampleNumberInput" type="number" required pattern="number" />
+              </div>
+              <span className="form-error" data-form-error-for="exampleNumberInput">
+                Amount is required.
+              </span>
+            </label>
+            <div className="name-field">
+              <label>
+                Your name <small>required</small>
+                <input type="text" required pattern="[a-zA-Z]+" />
+              </label>
+              <small className="error">
+                Name is required and must be a string.
+              </small>
+            </div>
+            <div className="email-field">
+              <label>
+                Email <small>required</small>
+                <input type="email" required />
+              </label>
+              <small className="error">An email address is required.</small>
+            </div>
+            <button type="submit">Submit</button>
           </form>
-          <button className="button" type="button" onClick={() => this.triggerModal(false)}>
-            Close
-          </button>
         </Modal>
       </div>;
   }
