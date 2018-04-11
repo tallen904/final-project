@@ -4,6 +4,7 @@ import Widget from './Widget'
 import UpcomingEvents from './UpcomingEvents'
 import EventCreationModal from './EventCreationModal'
 
+
 const DashboardContainer = props => {
     return <div className="dashboard-container">
         <div className="callout success dashboard-heading">
