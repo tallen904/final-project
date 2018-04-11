@@ -1,6 +1,7 @@
 .signup-container {
     height: 40%;
     width: 40%;
+    margin: 20vh auto 20vh auto;
     background: black;
     opacity: 0.75;
     display: flex;
