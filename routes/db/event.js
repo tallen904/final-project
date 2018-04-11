@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router()
 
 //below will set up routes for posting, getting, putting, and deleting an event object in the db
-router.post('/event', controller.event.postEvent)
+router.post('/event', controller.postDocument)
 
-router.get('/event/:id', controller.event.getEvent)
+router.get('/event/:id', controller.getDocument)
 
-router.put('/event/:id', controller.event.putEvent)
+router.put('/event/:id', controller.putDocument)
 
-router.delete('./event/:id', controller.event.deleteEvent)
+router.delete('/event/:id', controller.deleteDocument)
 
 module.exports = router

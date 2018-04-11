@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router()
 
 //below will set up routes for posting, getting, putting, and deleting a user object in the db
-router.post('/user', controller.user.postUser)
+router.post('/', controller.postDocument)
 
-router.get('/user/:id', controller.user.getUser)
+router.get('/:id', controller.getDocument)
 
-router.put('/user/:id', controller.user.putUser)
+router.put('/:id', controller.putDocument)
 
-router.delete('./user/:id', controller.user.deleteUser)
+router.delete('/:id', controller.deleteDocument)
 
 module.exports = router
