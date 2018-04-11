@@ -1,5 +1,6 @@
 module.exports = {
-  user  : require('./user'),
-  car   : require('./car'),
-  event : require('./event')
+  postDocument    : require('./postDocument'),
+  getDocument     : require('./getDocument'),
+  putDocument     : require('./putDocument'),
+  deleteDocument  : require('./deleteDocument')
 }
