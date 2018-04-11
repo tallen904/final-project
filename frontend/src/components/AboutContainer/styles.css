@@ -1,0 +1,19 @@
+.about-app {
+    background: white;
+    width: 100%;
+    color: black;
+}
+
+.app-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+p {
+    padding: 0 20% 0 20%;
+}
+
+h1 {
+    text-align: center;
+}
