@@ -13,7 +13,7 @@ class Dashboard extends Component {
         return (
             <div>
                 <Navbar />
-                <DashboardContainer user='Tanner Sorensen'/>
+                <DashboardContainer />
                 <Footer />
             </div>
         );
