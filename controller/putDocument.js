@@ -6,29 +6,29 @@ const db = require('../models')
 //update the document pased on the passed params
 //which should be in the form { key : newVal }
 module.exports = (path) => {
-  switch (path) {
-    case '/user':
-      return (req, res) => {
-        db.User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-          //send back the new data
-          .then(user => res.json(user))
-      }
-    case '/car':
-      return (req, res) => {
-        db.Car.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-          //send back the new data
-          .then(data => res.json(data))
-      }
-    case '/event':
-      return (req, res) => {
-        db.Event.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-          //send back the new data
-          .then(data => res.json(data))
-      }
-    default:
-      return (req, res) => {
-        //if nothing matches, send 404 status
-        res.sendStatus(404)
-      }
+  return (req, res) => {
+    //get the path from the request path mounted
+    const path = req.path()
+    //switch on the path
+    switch (path) {
+      case '/user':
+        return
+          db.User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+            //send back the document that was updated
+            .then(data => res.json(data))
+      case '/car':
+        return
+          db.Car.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+            //send back the document that was updated
+            .then(data => res.json(data))
+      case '/event':
+        return
+          db.Event.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+            //send back the document that was updated
+            .then(data => res.json(data))
+      default:
+        return
+          res.sendStatus(404)
+    }
   }
 }
