@@ -16,6 +16,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cruzinDb", err 
   console.log('db connected!');
 });
 
+//routes
+app.use('/', require('./routes'))
+
 app.listen(port, () => {
   console.log(`🌎  ==> DB now listening on PORT ${port}!`);
 });
