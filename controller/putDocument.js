@@ -15,15 +15,15 @@ module.exports = (path) => {
       }
     case '/car':
       return (req, res) => {
-        db.User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        db.Car.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
           //send back the new data
-          .then(user => res.json(user))
+          .then(data => res.json(data))
       }
     case '/event':
       return (req, res) => {
-        db.User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        db.Event.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
           //send back the new data
-          .then(user => res.json(user))
+          .then(data => res.json(data))
       }
     default:
       return (req, res) => {
