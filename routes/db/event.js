@@ -3,12 +3,13 @@ const express = require('express');
 const router = express.Router()
 
 //below will set up routes for posting, getting, putting, and deleting an event object in the db
-router.post('/event', controller.postDocument)
+//passing through the mounted path to be switched on in the controller
+router.post('/', controller.postDocument(router.path()))
 
-router.get('/event/:id', controller.getDocument)
+router.get('/:id', controller.getDocument(router.path()))
 
-router.put('/event/:id', controller.putDocument)
+router.put('/:id', controller.putDocument(router.path()))
 
-router.delete('/event/:id', controller.deleteDocument)
+router.delete('/:id', controller.deleteDocument(router.path()))
 
 module.exports = router
