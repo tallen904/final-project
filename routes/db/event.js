@@ -13,4 +13,7 @@ router.put('/:id', controller.putDocument(router.path()))
 
 router.delete('/:id', controller.deleteDocument(router.path()))
 
+//get all doc path
+router.get('/all', controller.allDocuments(router.path()))
+
 module.exports = router
