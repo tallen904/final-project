@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 import SignupContainer from './SignupContainer';
 import AboutContainer from '../AboutContainer';
 import LoginModal from './LoginModal';
