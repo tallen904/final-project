@@ -3,22 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
-    "jquery": "^3.3.1",
-    "react-foundation-modal": "^0.1.5",
     "@fortawesome/fontawesome-free-regular": "^5.0.9",
-    "foundation-sites": "^6.4.4-rc1",
+    "babel-polyfill": "^6.26.0",
+    "foundation-sites": "^6.2.0",
+    "jquery": "^3.3.1",
+    "motion-ui": "~1.2.3",
+    "node-sass-chokidar": "^1.2.2",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-foundation": "^0.9.4",
+    "react-foundation-modal": "^0.1.5",
     "react-modal": "^3.3.2",
-
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm-run-all -p watch-css start-js", 
+    "start-js": "react-scripts start",
+    "build-css": "node-sass-chokidar src/styles -o src/css --ouput-style compact --include-path .src/styles --include-path ./node_modules --include-path ./node_module/compass-mixins/lib --include-path ./node_modules/motion-ui/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path .src/styles --include-path ./node_modules --include-path ./node_module/compass-mixins/lib --include-path ./node_modules/motion-ui/ src/styles -o src/css --watch --recursive",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
