@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free-regular": "^5.0.9",
     "babel-polyfill": "^6.26.0",
     "foundation-sites": "^6.2.0",
     "jquery": "^3.3.1",
@@ -21,7 +20,7 @@
     "npm-run-all": "^4.1.2"
   },
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js", 
+    "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
     "build-css": "node-sass-chokidar src/styles -o src/css --ouput-style compact --include-path .src/styles --include-path ./node_modules --include-path ./node_module/compass-mixins/lib --include-path ./node_modules/motion-ui/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path .src/styles --include-path ./node_modules --include-path ./node_module/compass-mixins/lib --include-path ./node_modules/motion-ui/ src/styles -o src/css --watch --recursive",
