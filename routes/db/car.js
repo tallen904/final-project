@@ -3,12 +3,14 @@ const express = require('express');
 const router = express.Router()
 
 //below will set up routes for posting, getting, putting, and deleting a car object in the db
-router.post('/car', controller.postDocument)
+//passing through mounted path according to express docs
+//controller will populate the proper function that returns a promise to db
+router.post('/', controller.postDocument())
 
-router.get('/car/:id', controller.getDocument)
+router.get('/:id', controller.getDocument())
 
-router.put('/car/:id', controller.putDocument)
+router.put('/:id', controller.putDocument())
 
-router.delete('/car/:id', controller.deleteDocument)
+router.delete('/:id', controller.deleteDocument())
 
 module.exports = router

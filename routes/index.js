@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+//placeholder views for now
+router.use('/', require('./view'))
+
 //set up the route to access the db
 //route will look something like /db/MODEL/:id
 router.use('/db', require('./db'))
