@@ -5466,9 +5466,30 @@ a.thumbnail {
   background: #cacaca;
   box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4); }
 
+.login-box .login-or {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  min-width: 2.1em;
+  padding: 0.3em;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  text-align: center;
+  font-size: 1.275rem;
+  background: #cacaca;
+  box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4); }
+
 @media screen and (max-width: 39.9375em) {
   .login-box .or {
     top: 62%; } }
+
+@media screen and (max-width: 39.9375em) {
+  .login-box .login-or {
+    top: 74%; } }
 
 .login-box-title {
   font-weight: 300;
@@ -5480,7 +5501,7 @@ a.thumbnail {
   padding: 2.5rem; }
 
 .login-box-social-section {
-  background: url("https://images.pexels.com/photos/179124/pexels-photo-179124.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb");
+  background: url("https://i.pinimg.com/originals/47/81/a5/4781a5754b4b1cdb54792fa89d8a01af.jpg");
   background-size: cover;
   background-position: center; }
 
@@ -5653,3 +5674,6 @@ a.thumbnail {
   width: 75px;
   background-color: aliceblue;
   border-radius: 1px; }
+
+.login-box-social-section-inner-login, .login-box-form-section-login {
+  padding: 1.5rem; }
