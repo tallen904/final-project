@@ -2,13 +2,19 @@ const controller = require('../../controller');
 const express = require('express');
 const router = express.Router()
 
+//get all doc path
+router.get('/all', controller.allDocuments())
+
 //below will set up routes for posting, getting, putting, and deleting an event object in the db
-router.post('/event', controller.postDocument)
+//passing through mounted path according to express docs
+//controller will populate the proper function that returns a promise to db
+router.post('/', controller.postDocument())
 
-router.get('/event/:id', controller.getDocument)
+router.get('/:id', controller.getDocument())
 
-router.put('/event/:id', controller.putDocument)
+router.put('/:id', controller.putDocument())
 
-router.delete('/event/:id', controller.deleteDocument)
+router.delete('/:id', controller.deleteDocument())
+
 
 module.exports = router
