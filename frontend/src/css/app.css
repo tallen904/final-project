@@ -4884,7 +4884,7 @@ a.thumbnail {
 
 .signup-container {
   height: 40%;
-  width: 40%;
+  width: 75%;
   margin: 20vh auto 20vh auto;
   background: black;
   opacity: 0.75;
@@ -4892,13 +4892,23 @@ a.thumbnail {
   justify-content: center;
   align-items: center; }
 
-.signup-btn, .login-btn {
-  margin: 10%;
+.signup-container .row {
+  max-width: 100%;
+  width: 100%; }
+
+.button {
+  margin: 7% auto 7% auto;
   height: 50px;
-  width: 100%;
+  width: 15rem;
+  max-width: 15rem;
   background-color: aliceblue;
   border-radius: 10px;
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center; }
+
+button.button {
+  color: black; }
 
 .about-app {
   text-align: center;
@@ -4937,3 +4947,14 @@ a.thumbnail {
 .logo-header {
   font-size: 24px;
   color: white; }
+
+.page-footer {
+  background-color: black;
+  width: 100%;
+  max-width: 100%;
+  color: white;
+  padding-top: 5vh; }
+
+.copyright-text {
+  display: flex;
+  justify-content: center; }
