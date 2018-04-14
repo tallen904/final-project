@@ -4,9 +4,15 @@ class SignupContainer extends React.Component {
 	render() {
 		return (
 	        <div className='signup-container'>
-	            <button className='signup-btn' onClick={this.props.openSignupModal}>Signup</button>
-	            <button className='login-btn' onClick={this.props.openLoginModal}>Login</button>
-	        </div>
+				<div className='row'>
+					<div className='small-12 medium-6 columns'>
+	            		<button className='button' onClick={this.props.openSignupModal}>Signup</button>
+					</div>
+					<div className='small-12 medium-6 columns'>
+	            		<button className='button' onClick={this.props.openLoginModal}>Login</button>
+					</div>
+				</div>
+			</div>
 	    );
 	};
 }
