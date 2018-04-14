@@ -275,9 +275,10 @@
 .signup-btn, .login-btn {
     margin: 10%;
     height: 50px;
-    width: 75px;
+    width: 100%;
     background-color: aliceblue;
-    border-radius: 1px;
+    border-radius: 10px;
+    font-size: 1.25rem;
 }
 
 .about-app {
@@ -315,5 +316,15 @@
 }
 
 .menu {
-  padding-top: 15px;
+  padding-top: 12px;
+}
+
+.menu a {
+  color: white;
+  font-size: 18px;
+}
+
+.logo-header{
+  font-size: 24px;
+  color: white;
 }
