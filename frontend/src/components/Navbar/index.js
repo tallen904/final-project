@@ -1,22 +1,24 @@
 import React from 'react';
-import './styles.css'
+import logo from './assets/logo.png';
 
 const Navbar = () => {
-    return <div className="page-navbar">
-        <div className='nav-content'>
-            <div>
-                <a className="logo" href="#!">
-                    <h1>RideShare</h1>
-                </a>
+    return (
+        <div className='row collapse navbar'>
+            <div className='small-5 columns'>
+                <div>
+                    <a className="logo" href="#!">
+                        <img src={logo} alt="logo"/><span>ruzin'</span>
+                    </a>
+                </div>
             </div>
-            <div>
-                <ul>
-                    <li>Login</li>
-                    <li>Signup</li>
+            <div className='small-7 columns'>
+                <ul class="menu align-right">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Signup</a></li>
                 </ul>
             </div>
         </div>
-      </div>
+    )
 };
 
 export default Navbar;
