@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './css/app.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from './pages/Home'
-import Dashboard from './pages/Dashboard'
-import Carpool from './pages/Carpool'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Carpool from './pages/Carpool';
 
 class App extends Component {
   render() {

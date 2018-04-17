@@ -1,14 +1,22 @@
 import React from 'react';
 import Modal from 'react-modal';
 
+const customStyles = {
+	content : {
+		bottom: '240px'
+	}
+}
+
 class SignupModal extends React.Component {
 	render() {
 	    return (
 	    <div className='Login'>
-	      <Modal   
+		  <Modal   
+		  	className=""
 			isOpen={this.props.signupModalIsOpen}
 	      	onRequestClose={this.props.closeSignupModal}
-			ariaHideApp={false}>
+			ariaHideApp={false}
+			style={customStyles}>
 			<div className="login-box">
 				<div className="row collapse expanded">
 					<div className="small-12 medium-6 column small-order-2 medium-order-1">
