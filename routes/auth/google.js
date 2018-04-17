@@ -33,7 +33,7 @@ passport.use(new GoogleStrategy({
 ));
 
 //route at this point is crws.in/auth/google/
-app.get('/', passport.authenticate('google', {
+router.get('/', passport.authenticate('google', {
   scope: [
     'https://www.googleapis.com/auth/plus.login',
     'https://www.googleapis.com/auth/plus.profile.emails.read']
@@ -44,7 +44,7 @@ app.get('/', passport.authenticate('google', {
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/callback',
+router.get('/callback',
   passport.authenticate('google', {
     successRedirect: '/',
     failureRedirect: '/login'
@@ -52,7 +52,7 @@ app.get('/callback',
 
 //likely needs to be put into a separate router
 //definitely needs to be moved to a separate login page
-app.get('/logout', function (req, res) {
+router.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
