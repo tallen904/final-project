@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-router.use('/', require('./home'))
-
-router.use('/login', require('./login'))
+router.get('/', (req, res) => {
+  res.send('Login Success')
+})
 
 module.exports = router
