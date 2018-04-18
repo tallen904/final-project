@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 
 //body-parser setup
@@ -14,11 +14,11 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crwsin", err => {
   if (err) throw err;
   console.log('db connected!')
-});
+})
 
 //routes
 app.use('/', require('./routes'))
 
 app.listen(port, () => {
   console.log(`🌎  ==> DB now listening on PORT ${port}!`)
-});
+})
