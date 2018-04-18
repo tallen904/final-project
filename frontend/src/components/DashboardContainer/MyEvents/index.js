@@ -1,8 +1,7 @@
 import React from 'react';
-import './styles.css'
 import dummyevents from './dummyevents.json'
 
-const Widget = props => {
+const MyEvents = props => {
     const isDriver = event => {
         const iconStyle = { width: "50px", height: "50px" };
         if (event.driver) {
@@ -11,7 +10,7 @@ const Widget = props => {
           return <img style={iconStyle} alt="passenger" data-tooltip aria-haspopup="true" className="has-tip" data-disable-hover="false" tabIndex="1" title="You are a passenger for this event." src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png" />;
         }
     }
-    return <div className="card current-events-card">
+    return <div className="card current-events-card columns small-12 large-5 no-pad">
         <div className="card-divider">
           <h3>{props.heading}</h3>
         </div>
@@ -34,4 +33,4 @@ const Widget = props => {
       </div>;
 };
 
-export default Widget;
+export default MyEvents;
