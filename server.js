@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 //mongoose setup
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cruzinDb", err => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crwsin", err => {
   if (err) throw err;
   console.log('db connected!');
 });

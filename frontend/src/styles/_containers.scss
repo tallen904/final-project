@@ -1,6 +1,6 @@
 
 .home-container {
-    margin-bottom: 15vh;
+    // margin-bottom: 15vh;
     background-image: url('https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d94724534a130f36fc80be8a3c61c3e4&auto=format&fit=crop&w=1050&q=80');
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,8 +21,26 @@
 
 .login-box .or {
   position: absolute;
-  top: 62%;
-  left: 50%;
+  top: 35%;
+  left: 49.5%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: inline-block;
+  min-width: 2.1em;
+  padding: 0.3em;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  text-align: center;
+  font-size: 1.275rem;
+  background: #cacaca;
+  box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4);
+}
+
+.login-box .login-or {
+  position: absolute;
+  top: 35%;
+  left: 49%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -43,6 +61,12 @@
   }
 }
 
+@media screen and (max-width: 39.9375em) {
+  .login-box .login-or {
+    top: 81%;
+  }
+}
+
 .login-box-title {
   font-weight: 300;
   font-size: 1.875rem;
@@ -54,8 +78,13 @@
   padding: 2.5rem;
 }
 
+.login-box-form-section-login,
+.login-box-social-section-inner-login {
+  padding: 2.5rem;
+}
+
 .login-box-social-section {
-  background: url("https://images.pexels.com/photos/179124/pexels-photo-179124.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb");
+  background: url("https://i.pinimg.com/originals/47/81/a5/4781a5754b4b1cdb54792fa89d8a01af.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -234,7 +263,7 @@
 
 .signup-container {
     height: 40%;
-    width: 40%;
+    width: 75%;
     margin: 20vh auto 20vh auto;
     background: black;
     opacity: 0.75;
@@ -243,10 +272,84 @@
     align-items: center;
 }
 
-.signup-btn, .login-btn {
-    margin: 10%;
+.signup-container .row {
+  max-width: 100%;
+  width: 100%;
+}
+
+.button {
+    margin: 7% auto 7% auto;
     height: 50px;
-    width: 75px;
+    width: 15rem;
+    max-width: 15rem;
     background-color: aliceblue;
-    border-radius: 1px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+}
+
+button.button {
+  color: black;
+}
+
+.about-app {
+  text-align: center;
+  padding-top: 3.5vh;
+}
+
+.app-icon {
+  justify-content: center;
+  margin: 2.5rem;
+
+  svg {
+    font-size: 8.5rem;
+    color: steelblue;
+    margin-bottom: 1.5vh;
+  }
+}
+
+.logo img {
+  height: 10vh;
+  width: auto;
+  margin-left: 1.5vw;
+}
+
+.navbar {
+  background-color: black;
+  width: 100%;
+  max-width: 100%;
+}
+
+.container {
+  background-color: white;
+  width: 100%;
+  max-width: 100%;
+}
+
+.menu {
+  padding-top: 12px;
+}
+
+.menu a {
+  color: white;
+  font-size: 18px;
+}
+
+.logo-header{
+  font-size: 24px;
+  color: white;
+}
+
+.page-footer {
+  background-color: black;
+  width: 100%;
+  max-width: 100%;
+  color: white;
+  padding-top: 5vh;
+}
+
+.copyright-text {
+  display: flex;
+  justify-content: center;
 }
