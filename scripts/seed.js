@@ -41,7 +41,7 @@ db.Event.remove({}, () => console.log('Events removed,'))
 
   //link the event to both the user and the car.
   //using async to prevent having to keep using promises
-  .then(async dbEvent => {
+  .then(async function(dbEvent) {
     //find the user and push the event id
     await db.User.findOneAndUpdate({}, {$push : {events : dbEvent._id}})
     //finding and updating the only car in db
