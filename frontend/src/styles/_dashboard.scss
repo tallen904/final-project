@@ -1,0 +1,44 @@
+.form-alert-text {
+    text-align: center;
+}
+
+.no-pad {
+    padding: 0;
+}
+
+.dashboard-container {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border: 2px solid black;
+    height: 100vh;
+    overflow: scroll;
+    .dashboard-heading {
+        display: flex;
+        justify-content: space-between;
+    }
+    .create-event-div {
+        display: flex;
+        justify-content: center;
+        margin-left: 25vw;
+        margin-right: 25vw;
+        .create-event-button {
+            width: 100%
+        }
+    }
+    .current-events-card {
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+    .upcoming-events-card {
+        margin-right: 2.5%
+    }
+}
+
+
+
+
+
+
+

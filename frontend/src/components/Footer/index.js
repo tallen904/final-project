@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css'
 import { Menu, MenuItem } from 'react-foundation'
 
 const Footer = () => {
