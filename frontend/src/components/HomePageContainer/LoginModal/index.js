@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 const customStyles = {
 	content : {
-		bottom: '210px'
+		bottom: 'auto'
 	}
 }
 
