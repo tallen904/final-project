@@ -7,7 +7,7 @@ class Navbar extends React.Component {
             <div className='row collapse navbar'>
                 <div className='small-5 columns'>
                     <div>
-                        <a className="logo" href="#!">
+                        <a className="logo" href="/">
                             <img src={logo} alt="logo"/><span className='logo-header'>ruzin'</span>
                         </a>
                     </div>
