@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.card-divider {
+    border-radius: $global-radius
+}
+
 .no-pad {
     padding: 0;
 }
@@ -11,9 +15,8 @@
     margin-right: 10vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
+    background-color: #f7f7f7;
     border: 2px solid black;
-    height: 100vh;
-    overflow: scroll;
     .dashboard-heading {
         display: flex;
         justify-content: space-between;
@@ -35,7 +38,6 @@
         margin-right: 2.5%
     }
 }
-
 
 
 

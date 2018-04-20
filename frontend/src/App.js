@@ -4,7 +4,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import Carpool from './pages/Carpool';
+import Details from './pages/Details';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path ='/carpool' component={Carpool} />
+            <Route exact path ='/details' component={Details} />
             <Route path='/dashboard/:id' component={Dashboard} />
           </Switch>
         </div>

@@ -12,9 +12,9 @@ const Navbar = () => {
                 </div>
             </div>
             <div className='small-7 columns'>
-                <ul class="menu align-right">
-                    <li><a href="#">Signup</a></li>
-                    <li><a href="#">Login</a></li>
+                <ul className="menu align-right">
+                    <li><a href="#!">Signup</a></li>
+                    <li><a href="#!">Login</a></li>
                 </ul>
             </div>
         </div>

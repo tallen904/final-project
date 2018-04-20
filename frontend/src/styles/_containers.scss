@@ -107,7 +107,7 @@
   border-bottom: 2px solid #1779ba;
 }
 
-.login-box-submit-button {
+%login-box-buttons {
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 1rem 0;
@@ -120,14 +120,18 @@
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #1779ba;
-  color: #fefefe;
   display: block;
   width: 100%;
   margin-right: 0;
   margin-left: 0;
-  border-radius: 0;
   text-transform: uppercase;
+}
+
+.login-box-submit-button {
+  @extend %login-box-buttons;
+  background-color: #1779ba;
+  color: #fefefe;
+  border-radius: 0;
   margin-bottom: 0;
 }
 
@@ -150,27 +154,11 @@
 }
 
 .login-box-social-button-facebook {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem 0;
-  padding: 0.85em 1em;
-  -webkit-appearance: none;
-  border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-size: 0.9rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
+  @extend %login-box-buttons;
   background-color: #3b5998;
   color: #fefefe;
-  display: block;
-  width: 100%;
-  margin-right: 0;
-  margin-left: 0;
   font-weight: 500;
   margin-bottom: 1.25rem;
-  text-transform: uppercase;
 }
 
 [data-whatinput='mouse'] .login-box-social-button-facebook {
@@ -183,27 +171,11 @@
 }
 
 .login-box-social-button-twitter {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem 0;
-  padding: 0.85em 1em;
-  -webkit-appearance: none;
-  border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-size: 0.9rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
+  @extend %login-box-buttons;
   background-color: #55acee;
   color: #fefefe;
-  display: block;
-  width: 100%;
-  margin-right: 0;
-  margin-left: 0;
   font-weight: 500;
   margin-bottom: 1.25rem;
-  text-transform: uppercase;
 }
 
 [data-whatinput='mouse'] .login-box-social-button-twitter {
@@ -216,27 +188,11 @@
 }
 
 .login-box-social-button-google {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem 0;
-  padding: 0.85em 1em;
-  -webkit-appearance: none;
-  border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-size: 0.9rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
+  @extend %login-box-buttons;
   background-color: #dd4b39;
   color: #fefefe;
-  display: block;
-  width: 100%;
-  margin-right: 0;
-  margin-left: 0;
   font-weight: 500;
   margin-bottom: 1.25rem;
-  text-transform: uppercase;
 }
 
 [data-whatinput='mouse'] .login-box-social-button-google {

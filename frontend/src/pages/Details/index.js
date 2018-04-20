@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import DashboardContainer from '../../components/DashboardContainer'
+import DetailsContainer from '../../components/DetailsContainer'
 
-class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
+class Details extends Component {
     render() {
         return (
             <div>
                 <Navbar />
-                <DashboardContainer userId={this.props.match.params.id}/>
+                <DetailsContainer />
                 <Footer />
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default Details;
