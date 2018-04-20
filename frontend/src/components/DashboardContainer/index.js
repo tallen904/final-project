@@ -3,6 +3,7 @@ import MyEvents from "./MyEvents";
 import UpcomingEvents from "./UpcomingEvents";
 import EventCreationModal from "./EventCreationModal";
 import EventAPI from '../../utils/EventAPI'
+import UserAPI from '../../utils/UserAPI'
 
 class DashboardContainer extends Component {
   state = {
@@ -15,9 +16,12 @@ class DashboardContainer extends Component {
   };
 
   componentDidMount() {
+    UserAPI.getUser(this.props.userId).then(res => {
+      console.log(res);
+    });
     EventAPI.getEvents()
     .then(res => {
-      this.setState({events: res.data})
+      this.setState({ events: res.data })
     })
   }
 
@@ -30,7 +34,6 @@ class DashboardContainer extends Component {
   };
 
   render() {
-
     return <div className="dashboard-container">
         <div className="callout success dashboard-heading">
           <h4>My Dashboard</h4>
