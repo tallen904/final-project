@@ -9,18 +9,14 @@ module.exports = () => {
     //switch on the path
     switch (path) {
       case '/db/user':
-        //TODO:
-        //pending implementation
-        //can get all of the users that have a linked event, but it will likely
-        //be best to get that from the cars that are owned by the event
-        return 
+        //populates all of the events the user belongs to
+        return db.User.findById(req.params.id).populate('events').then(userWithEvents => res.json(userWithEvents))
       case '/db/car':
-        //TODO:
-        //pending implementation
-        //should likely send back the list of the cars that are linked to an event
-        return
+        //populates all of the riders in a cars
+        return db.Car.findById(req.params.id).populate('riders').then(carWithRiders => res.json(carWithRiders))
       case '/db/event':
-        return db.Event.find().then(events => res.json(events));
+        //gets all of the events on the db
+        return db.Event.find().then(events => res.json(events))
       default:
         //if the path is not found, send 404
         return res.send('Status(404)')
