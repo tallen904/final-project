@@ -6829,5 +6829,72 @@ button.button {
     display: flex;
     justify-content: center; }
 
-.details-container {
-  height: 100vh; }
+
+/** CSS Grid container **/
+.events-container-desktop {
+  display: grid;
+  grid-template-columns: [title-col-start sidebar-col-start] 30% [sidebar-col-end content-col-start] 40% [decision-col-start title-col-end] 30% [content-col-end decision-col-end];
+  grid-template-rows: [title-row-start decision-row-start] 150px [title-row-end sidebar-row-start content-row-start] 600px [sidebar-row-end content-row-end decision-row-end];
+  height: 80%;
+  width: 100%;
+  max-width: 1500px;
+  margin: auto; }
+
+.events-item-title {
+  grid-column-start: title-col-start;
+  grid-column-end: title-col-end;
+  grid-row-start: title-row-start;
+  grid-row-end: title-row-end;
+  background-color: purple; }
+
+.events-item-sidebar {
+  grid-column-start: sidebar-col-start;
+  grid-column-end: sidebar-col-end;
+  grid-row-start: sidebar-row-start;
+  grid-row-end: sidebar-row-end;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.events-item-content {
+  grid-column-start: content-col-start;
+  grid-column-end: content-col-end;
+  grid-row-start: content-row-start;
+  grid-row-end: content-row-end;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.events-item-decision {
+  grid-column-start: decision-col-start;
+  grid-column-end: decision-col-end;
+  grid-row-start: decision-row-start;
+  grid-row-end: decision-row-end;
+  background-color: teal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.events-box-sidebar {
+  border-color: black;
+  border-weight: 1px;
+  border-style: solid; }
+
+.events-box-content {
+  border-color: black;
+  border-weight: 1px;
+  border-style: solid; }
+
+.events-box-decision {
+  border-color: black;
+  border-weight: 1px;
+  border-style: solid; }
+
+.map {
+  width: 300px;
+  margin: 20px; }
