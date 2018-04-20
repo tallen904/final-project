@@ -6829,7 +6829,6 @@ button.button {
     display: flex;
     justify-content: center; }
 
-
 /** CSS Grid container **/
 .events-container-desktop {
   display: grid;
