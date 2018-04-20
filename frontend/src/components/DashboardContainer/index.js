@@ -38,7 +38,7 @@ class DashboardContainer extends Component {
         <div className="callout success dashboard-heading">
           <h4>My Dashboard</h4>
           <h5>Welcome back, {this.state.user.name}!</h5>
-          <h6>Todays date: {this.state.user.date}</h6>
+          <h6>Today's date: {this.state.user.date}</h6>
         </div>
         <div className="create-event-div">
           <button onClick={this.openEventModal} className="button expand create-event-button">
