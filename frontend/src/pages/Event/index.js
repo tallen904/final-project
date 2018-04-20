@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import DashboardContainer from '../../components/DashboardContainer'
+import EventContainer from '../../components/EventContainer'
 
-class Dashboard extends Component {
+class Event extends Component {
     constructor(props) {
         super(props);
 
@@ -13,11 +13,11 @@ class Dashboard extends Component {
         return (
             <div>
                 <Navbar />
-                <DashboardContainer userId={this.props.match.params.id}/>
+                <EventContainer />
                 <Footer />
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default Event;

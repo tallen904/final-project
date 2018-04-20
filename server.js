@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3001
 
-
 //body-parser setup
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

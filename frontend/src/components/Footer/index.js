@@ -1,5 +1,4 @@
 import React from 'react';
-import { Menu, MenuItem } from 'react-foundation'
 
 const Footer = () => {
     return <div className="page-footer">
