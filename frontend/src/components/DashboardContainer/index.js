@@ -6,19 +6,19 @@ import EventAPI from '../../utils/EventAPI'
 import UserAPI from '../../utils/UserAPI'
 
 class DashboardContainer extends Component {
-  state = {
-    eventModalIsOpen: false,
-    events: [],
-    user: {
-      name: 'Tanner Sorensen',
-      date: 'April 16th, 2018'
-    }
-  };
+  constructor(props){
+    super(props);
+    this.state = { eventModalIsOpen: false,
+                   eventId: '',
+                   events: [],
+                   myEvents: [],
+                   username: "Tanner Sorensen",
+                   date: new Date().toString() 
+                  };
+  }
 
   componentDidMount() {
-    UserAPI.getUser(this.props.userId).then(res => {
-      console.log(res);
-    });
+    this.getUserInfo()
     EventAPI.getEvents()
     .then(res => {
       this.setState({ events: res.data })
@@ -33,12 +33,52 @@ class DashboardContainer extends Component {
     this.setState({ eventModalIsOpen: false });
   };
 
+  getUserInfo = () => {
+    UserAPI.getUser(this.props.userId).then(res => {
+      this.setState({ username: res.data.name, myEvents: res.data.events });
+      let newEvents = this.state.myEvents
+      let pushEvents = [];
+      newEvents.map(eventId => {
+        EventAPI.getEvent(eventId).then(res => {
+          pushEvents.push(res.data)
+          this.setState({ myEvents: pushEvents })
+        })
+      })
+    });
+  }
+
+  getEvent = id => {
+    EventAPI.getEvent(id).then(res => {
+      return res.data
+    })
+  }
+
+  // joinEvent = e => {
+  //   const eventId = e.target.dataset.id
+  //   EventAPI.getEvent(eventId).then(res => {
+  //     console.log(res.data)
+  //     UserAPI.updateUser(this.props.userId, eventId).then(res => {
+  //       console.log(res)
+  //     })
+  //   })
+  // }
+
+  joinEvent = e => {
+    const eventId = e.target.dataset.id
+    EventAPI.getEvent(eventId).then(res => {
+      console.log(res)
+      let newEventId = res.data._id
+      UserAPI.updateUser(this.props.userId, { events : newEventId }).then(res => {
+        console.log(res)
+      })
+    })
+  }
+
   render() {
     return <div className="dashboard-container">
         <div className="callout success dashboard-heading">
-          <h4>My Dashboard</h4>
-          <h5>Welcome back, {this.state.user.name}!</h5>
-          <h6>Todays date: {this.state.user.date}</h6>
+          <h5>Welcome back, {this.state.username}!</h5>
+          <h6>Todays date: {this.state.date}</h6>
         </div>
         <div className="create-event-div">
           <button onClick={this.openEventModal} className="button expand create-event-button">
@@ -46,8 +86,8 @@ class DashboardContainer extends Component {
           </button>
         </div>
         <div className="row align-center">
-          <MyEvents heading="My Events" />
-          <UpcomingEvents events={this.state.events} heading="Upcoming Events" />
+          <MyEvents myEvents={this.state.myEvents} heading="My Events" />
+          <UpcomingEvents joinEvent={this.joinEvent} events={this.state.events} heading="Upcoming Events" />
         </div>
         <EventCreationModal eventModalIsOpen={this.state.eventModalIsOpen} closeEventModal={this.closeEventModal} />
       </div>;

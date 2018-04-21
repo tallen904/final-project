@@ -13,7 +13,13 @@ module.exports = (path) => {
     switch (path) {
       case '/db/user':
         //send back the document that was updated
-        return db.User.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }).then(data => res.json(data))
+        return db.User.findById(req.params.id).then(user => {
+          user.events.push(req.body.events)
+          user.save()
+          res.json(user)
+        }).catch(err => {
+          res.json(err)
+        })
       case '/db/car':
         //send back the document that was updated
         return db.Car.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }).then(data => res.json(data))

@@ -22,7 +22,7 @@ const UpcomingEvents = props => {
                 </div>
                 <p className="no-pad">{event.location}</p>
                 <div className="row align-center">
-                  <button className="button small-6 columns">Join This Event!</button>
+                  <button onClick={props.joinEvent} data-id={event._id} className="button small-6 columns">Join This Event!</button>
                 </div>
               </div>;
         })}

@@ -1,7 +1,7 @@
 import React from 'react';
-import dummyevents from './dummyevents.json'
 
 const MyEvents = props => {
+    console.log(props.myEvents)
     const isDriver = event => {
         const iconStyle = { width: "50px", height: "50px" };
         if (event.driver) {
@@ -15,12 +15,12 @@ const MyEvents = props => {
           <h3>{props.heading}</h3>
         </div>
         <div className="card-section">
-          {dummyevents.map((event, i) => {
+          {props.myEvents.map((event, i) => {
             const style = { color: "black", borderBottom: "1px solid black", width: "100%" };
             const iconDivStyle = { display: 'flex', justifyContent: 'space-between' };
             return <a key={i} style={style} href="#!">
                 <div style={style}>
-                  <h4>{event.event}</h4>
+                  <h4>{event.name}</h4>
                   <div style={iconDivStyle}>
                     <p>{event.date}</p>
                     {isDriver(event)}

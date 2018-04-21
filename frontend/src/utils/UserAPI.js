@@ -11,10 +11,14 @@ export default {
   },
   // Deletes the user with the given id
   deleteUser: function(id) {
-    return axios.delete("/db/user" + id);
+    return axios.delete("/db/user/" + id);
   },
   // Saves a user to the database
   createUser: function(userData) {
     return axios.post("/db/user", userData);
+  },
+  // Update a user (adding an event)
+  updateUser: function(id, data) {
+    return axios.put(`/db/user/${id}`, data)
   }
 };
