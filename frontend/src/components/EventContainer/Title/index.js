@@ -1,9 +1,9 @@
 import React from "react";
 
-const Title = () => {
+const Title = props => {
 	return (
   <div className='event-title'>
-   <h1>Title Placeholder!</h1>
+   <h1>{props.title || 'Event Title'}</h1>
   </div>
 
 
