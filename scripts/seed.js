@@ -10,7 +10,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crwsin");
 const testUser = {
   name    : 'Johnny Boy',
   seats   : 4,
-  email   : 'goodboy@johnny.com'
+  email   : 'goodboy@johnny.com',
+  password: 'password'
 }
 
 //a car only needs a driver and seats to be created, but has linking to event it belongs to
