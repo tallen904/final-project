@@ -75,7 +75,7 @@ class EventForm extends React.Component {
         <form id="event-form" className="small-12 columns" data-abide noValidate onSubmit={this.onSubmit}>
           <div className="row align-center">
             <div className="small-12 columns align-center">
-              <div data-abide-error role="alert" className="alert callout" style={{ display: "none", textAlign: "center;" }}>
+              <div data-abide-error role="alert" className="alert callout" style={{ display: "none", textAlign: "center" }}>
                 <p className="form-alert-text">
                   <i className="fi-alert" /> There are some errors in your form.
                 </p>
@@ -99,11 +99,34 @@ class EventForm extends React.Component {
               <div className="row align-center">
                 <div className="small-12 large-10 columns ">
                   <label>
-                    Event Location
-                    <input type="text" name="eventLocation" value={this.state.eventLocation} required onChange={this.onChange} />
+                    Event Street Address
+                    <input type="text" name="eventLocation" value={this.state.eventAddress} required onChange={this.onChange} />
                     <span className="form-error">
-                      Event Location is required
+                      Event Street Address is required
                     </span>
+                  </label>
+                </div>
+              </div>
+              <div className="row align-center">
+                <div className="small-6 large-6 columns ">
+                  <label>
+                    City
+                    <input type="text" name="eventCity" value={this.state.eventCity} required onChange={this.onChange} />
+                    <span className="form-error">City is required</span>
+                  </label>
+                </div>
+                <div className="small-3 large-2 columns ">
+                  <label>
+                    Zipcode
+                    <input type="text" name="eventZipcode" value={this.state.eventZipcode} required onChange={this.onChange} />
+                    <span className="form-error">Zipcode is required</span>
+                  </label>
+                </div>
+                <div className="small-3 large-2 columns ">
+                  <label>
+                    State
+                    <input type="text" name="eventState" value={this.state.eventState} required onChange={this.onChange} />
+                    <span className="form-error">State is required</span>
                   </label>
                 </div>
               </div>
