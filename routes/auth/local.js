@@ -1,6 +1,7 @@
+const db = require('../../models')
+const router = require('express').Router()
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const db = require('../../models')
 
 passport.use(new LocalStrategy(
   //using custom params for authentication
@@ -27,6 +28,16 @@ passport.use(new LocalStrategy(
   }
 ))
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  db.User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 //when posting to /auth/local
 //use passport to authenticate
 router.post('/', 
@@ -38,3 +49,5 @@ router.post('/',
     }
   )
 )
+
+module.exports = router
