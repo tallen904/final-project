@@ -1,5 +1,7 @@
-const db = require('../../models')
+const User = require('../../models/User')
 const router = require('express').Router()
+
+
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
@@ -12,7 +14,7 @@ passport.use(new LocalStrategy(
   },
   (username, password, done) => {
     //query db for a user matching the email address
-    db.User.findOne({ email : username })
+    User.findOne({ email : username })
       .then(user => {
         //if no user found, 
         if (!user){
@@ -33,7 +35,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  db.User.findById(id, function(err, user) {
+  User.findById(id, function(err, user) {
     done(err, user);
   });
 });
@@ -45,7 +47,7 @@ router.post('/',
     {
       successRedirect : '/',
       failureRedirect : '/login',
-      faulureFlash : true
+      failureFlash : true
     }
   )
 )
