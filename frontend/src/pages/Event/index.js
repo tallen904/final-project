@@ -10,13 +10,11 @@ class Event extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <Navbar />
-                <EventContainer />
-                <Footer />
-            </div>
-        );
+        return <div>
+            <Navbar />
+            <EventContainer eventId={this.props.match.params.id} />
+            <Footer />
+          </div>;
     }
 }
 

@@ -12,24 +12,25 @@ import Waitlist from "./Waitlist";
 import EventAPI from '../../utils/EventAPI'
 
 class EventContainer extends Component {
-  state = {
-    events: [],
-  };
-
+  constructor(props){
+    super(props);
+    this.state = { event: {} };
+  }
 
   componentDidMount() {
-    EventAPI.getEvents()
+    EventAPI.getEvent(this.props.eventId)
     .then(res => {
-      this.setState({events: res.data})
+      console.log(res)
+      this.setState({event: res.data})
     })
   }
 
-
   render() {
+    console.log(this.props.eventId)
 
     return  <div className="events-container-desktop">
               <div className="events-item-title">
-                <Title />
+                <Title title={this.state.event.name} />
                
               </div>
 
@@ -41,10 +42,10 @@ class EventContainer extends Component {
               <div className="events-item-sidebar">
                 
                 <Map />
-                <Info />
+                <Info event={this.state.event}/>
               </div>
               <div className="events-item-content">
-                <Drivers />
+                <Drivers drivers={['Kat', 'Kevin']} passengers={['Tanner', 'Justin', 'James']}/>
                 <Waitlist />
               </div>
             </div>; //return <div className="events-container-desktop">

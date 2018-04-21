@@ -15,6 +15,9 @@ const newSchema = new Schema({
     type      : String,
     required  : true
   },
+  'password': {
+    type  : String
+  },
   'events': [{
     type      : Schema.Types.ObjectId,
     ref       : 'Event'

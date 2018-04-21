@@ -13,7 +13,7 @@ class Navbar extends React.Component {
                     </div>
                 </div>
                 <div className='small-7 columns'>
-                    <ul class="menu align-right">
+                    <ul className="menu align-right">
                         <li><a href="#" onClick={this.props.openSignupModal}>Signup</a></li>
                         <li><a href="#" onClick={this.props.openLoginModal}>Login</a></li>
                     </ul>
