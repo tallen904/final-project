@@ -17,13 +17,13 @@ class EventContainer extends Component {
     this.state = { event: {} };
   }
 
-  componentDidMount() {
-    EventAPI.getEvent(this.props.eventId)
-    .then(res => {
-      console.log(res)
-      this.setState({event: res.data})
-    })
-  }
+  // componentDidMount() {
+  //   EventAPI.getEvent(this.props.eventId)
+  //   .then(res => {
+  //     console.log(res)
+  //     this.setState({event: res.data})
+  //   })
+  // }
 
   render() {
     console.log(this.props.eventId)
