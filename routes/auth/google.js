@@ -10,6 +10,7 @@ const GOOGLE_CLIENT_ID = "502626059336-03u3ipvjpd9jjg016aq2hl53tj2mil2e.apps.goo
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
+  //update with link to heroku-deployed server
   callbackURL: "http://localhost:3001/auth/google/callback"
 },
   function (request, accessToken, refreshToken, profile, done) {
@@ -64,7 +65,7 @@ router.get(
 router.get('/callback',
   passport.authenticate('google', {
     //hard set link for now
-    successRedirect: 'http://localhost:3000/',
+    successRedirect: '/',
     failureRedirect: '/login'
   }));
 
@@ -72,7 +73,7 @@ router.get('/callback',
 //definitely needs to be moved to a separate login page
 router.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('http://localhost:3000/');
+  res.redirect('/');
 });
 
 // Simple route middleware to ensure user is authenticated.
