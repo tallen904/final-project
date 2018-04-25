@@ -18,7 +18,6 @@ passport.use(new GoogleStrategy({
       //find or create user account in db
       User.findOne({ email : profile.emails[0].value })
         .then(user => {
-          console.log(user)
           //if no user found, create one
           if (!user) {
             //return promise to create a user in the db
