@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const MyEvents = props => {
     const isDriver = event => {
@@ -9,6 +10,7 @@ const MyEvents = props => {
           return <img style={iconStyle} alt="passenger" data-tooltip aria-haspopup="true" className="has-tip" data-disable-hover="false" tabIndex="1" title="You are a passenger for this event." src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png" />;
         }
     }
+
     return <div className="card current-events-card columns small-12 large-5 no-pad">
         <div className="card-divider">
           <h3>{props.heading}</h3>
@@ -25,6 +27,7 @@ const MyEvents = props => {
                     {isDriver(event)}
                   </div>
                   <p>{event.location}</p>
+                  <Link className='button' to={`/event/${event._id}`}>Event Details</Link>
                 </div>
               </a>;
           })}
