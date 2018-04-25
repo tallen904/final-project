@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MyEvents = props => {
-    console.log(props.myEvents)
     const isDriver = event => {
         const iconStyle = { width: "50px", height: "50px" };
         if (event.driver) {
