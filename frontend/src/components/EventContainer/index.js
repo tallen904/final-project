@@ -14,16 +14,27 @@ import EventAPI from '../../utils/EventAPI'
 class EventContainer extends Component {
   constructor(props){
     super(props);
-    this.state = { event: {} };
+    this.state = { 
+      event: {},
+      lat : 0,
+      lng : 0
+    };
   }
 
-  // componentDidMount() {
-  //   EventAPI.getEvent(this.props.eventId)
-  //   .then(res => {
-  //     console.log(res)
-  //     this.setState({event: res.data})
-  //   })
-  // }
+  updateLatLng(lat, lng) {
+    this.setState({
+      lat: lat,
+      lng: lng
+    })
+  }
+
+  componentDidMount() {
+    EventAPI.getEvent(this.props.eventId)
+    .then(res => {
+      console.log(res)
+      this.setState({event: res.data})
+    })
+  }
 
   render() {
     console.log(this.props.eventId)
