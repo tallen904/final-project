@@ -45,7 +45,7 @@ passport.deserializeUser(function(id, done) {
 router.post('/', 
   passport.authenticate('local', 
     {
-      successRedirect : '/',
+      successRedirect : 'http://localhost:3000',
       failureRedirect : '/login',
       failureFlash : true
     }
