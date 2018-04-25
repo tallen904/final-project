@@ -11,7 +11,10 @@ class EventCreationModal extends React.Component {
               <h2>&times;</h2>
             </span>
           </button>
-          <EventForm />
+          <EventForm
+            associate={this.props.associate}
+            closeModal={this.props.closeEventModal}
+          />
         </Modal>
       </div>;
   }

@@ -31,9 +31,9 @@ class LoginModal extends React.Component {
 					</div>
 					<div className="small-12 medium-6 column small-order-1 medium-order-2 login-box-social-section">
 						<div className="login-box-social-section-inner-login">
-							<span className="login-box-social-headline">Sign up with<br />your social network</span>
-							<a className="login-box-social-button-facebook">Sign up with facebook</a>
-							<a className="login-box-social-button-google">Sign up with Google+</a>
+							<span className="login-box-social-headline">Log in with<br />your social network</span>
+							<a className="login-box-social-button-facebook">Log in with facebook</a>
+							<a className="login-box-social-button-google">Log in with Google+</a>
 						</div>
 					</div>
 				</div>
