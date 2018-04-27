@@ -11,6 +11,7 @@
 }
 
 .dashboard-container {
+    border-radius: $global-radius;
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: 5vh;
@@ -18,6 +19,8 @@
     background-color: #f7f7f7;
     border: 2px solid black;
     .dashboard-heading {
+        border-top-left-radius: $global-radius;
+        border-top-right-radius: $global-radius;
         display: flex;
         justify-content: space-between;
     }
