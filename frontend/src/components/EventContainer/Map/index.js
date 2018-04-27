@@ -1,6 +1,9 @@
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from "react";
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import Geocode from "react-geocode";
+
+Geocode.setApiKey("AIzaSyAwIze81UMw6T5ASTCAD0UWuMh3HlFY92o");
 
 const MyMapComponent = compose(
   withProps({
@@ -20,13 +23,23 @@ const MyMapComponent = compose(
   </GoogleMap>
 )
 
-class Map extends React.PureComponent {
+class Map extends React.Component {
   state = {
-    isMarkerShown: false,
+    isMarkerShown : false
   }
 
   componentDidMount() {
     this.delayedShowMarker()
+    Geocode.fromAddress(this.props.event.location).then(
+      response => {
+        let { lat, lng } = response.results[0].geometry.location;
+        console.log(lat, lng);
+        updateLatLng(lat, lng)
+      },
+      error => {
+        console.error(error);
+      }
+    )
   }
 
   delayedShowMarker = () => {
