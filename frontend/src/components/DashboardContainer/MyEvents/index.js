@@ -19,8 +19,8 @@ const MyEvents = props => {
           {props.myEvents.map((event, i) => {
             const style = { color: "black", borderBottom: "1px solid black", width: "100%" };
             const iconDivStyle = { display: 'flex', justifyContent: 'space-between' };
-            return <a key={i} style={style} href="#!">
-                <div style={style}>
+            return (
+                <div key={i} style={style}>
                   <h4>{event.name}</h4>
                   <div style={iconDivStyle}>
                     <p>{event.date}</p>
@@ -29,7 +29,7 @@ const MyEvents = props => {
                   <p>{event.location}</p>
                   <Link className='button' to={`/event/${event._id}`}>Event Details</Link>
                 </div>
-              </a>;
+            )
           })}
         </div>
       </div>;

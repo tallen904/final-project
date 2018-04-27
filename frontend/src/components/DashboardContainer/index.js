@@ -14,7 +14,7 @@ class DashboardContainer extends Component {
       events: [],
       myEvents: [],
       username: "",
-      date: new Date().toString(),
+      date: new Date().toLocaleString(),
       newEvent: {}
     };
   }
@@ -44,7 +44,7 @@ class DashboardContainer extends Component {
       let newEvents = this.state.myEvents;
       let myEvents = [];
       newEvents.map(eventId => {
-        EventAPI.getEvent(eventId).then(res => {
+        return EventAPI.getEvent(eventId).then(res => {
           myEvents.push(res.data);
           this.setState({ myEvents });
         });
