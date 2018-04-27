@@ -11,6 +11,7 @@
 }
 
 .dashboard-container {
+    border-radius: $global-radius;
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: 5vh;
@@ -18,6 +19,8 @@
     background-color: #f7f7f7;
     border: 2px solid black;
     .dashboard-heading {
+        border-top-left-radius: $global-radius;
+        border-top-right-radius: $global-radius;
         display: flex;
         justify-content: space-between;
     }
@@ -27,8 +30,29 @@
         margin-left: 25vw;
         margin-right: 25vw;
         .create-event-button {
-            width: 100%
-        }
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0 1rem 0;
+            font-family: inherit;
+            padding: 0.85em 1em;
+            -webkit-appearance: none;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            transition: background-color 0.25s ease-out, color 0.25s ease-out;
+            font-size: 0.9rem;
+            line-height: 1;
+            text-align: center;
+            cursor: pointer;
+            background-color: #1779ba;
+            color: #fefefe; }
+            [data-whatinput='mouse'] .create-event-button {
+                outline: 0; 
+            }
+            .create-event-button:hover, .create-event-button:focus {
+                background-color: #14679e;
+                color: #fefefe; 
+}
     }
     .current-events-card {
         margin-left: 2.5%;

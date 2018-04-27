@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
+const User = require('../../models/User')
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth2').Strategy
 
@@ -10,34 +10,52 @@ const GOOGLE_CLIENT_ID = "502626059336-03u3ipvjpd9jjg016aq2hl53tj2mil2e.apps.goo
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  //NOTE :
-  //Carefull ! and avoid usage of Private IP, otherwise you will get the device_id device_name issue for Private IP during authentication
-  //The workaround is to set up thru the google cloud console a fully qualified domain name such as http://mydomain:3000/ 
-  //then edit your /etc/hosts local file to point on your private IP. 
-  //Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and lead to lost your session
-  //if you use it.
-  callbackURL: "http://localhost:3001/auth/google/callback",
-  passReqToCallback: true
+  //update with link to heroku-deployed server
+  callbackURL: "http://localhost:3001/auth/google/callback"
 },
   function (request, accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-
-      // To keep the example simple, the user's Google profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Google account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile)
+      //find or create user account in db
+      User.findOne({ email : profile.emails[0].value })
+        .then(user => {
+          //if no user found, create one
+          if (!user) {
+            //return promise to create a user in the db
+            return User.create({
+              //use data from google's response
+              email : profile.emails[0].value,
+              name : `${profile.name.givenName} ${profile.name.familyName}`
+              }).then(user => {
+                user.save()
+                return done(null, user)
+              })
+          }
+          //else, simply return the user from the db
+          return done(null, user)
+        })
     });
   }
 ));
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 //route at this point is crws.in/auth/google/
-router.get('/', passport.authenticate('google', {
-  scope: [
-    'https://www.googleapis.com/auth/plus.login',
-    'https://www.googleapis.com/auth/plus.profile.emails.read']
-}));
+router.get(
+  "/",
+  passport.authenticate("google", {
+    //using the userinfo.email endpoint since that's all we need to see
+    scope: "https://www.googleapis.com/auth/userinfo.email"
+  })
+);
 
 // route is now /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -46,6 +64,7 @@ router.get('/', passport.authenticate('google', {
 //   which, in this example, will redirect the user to the home page.
 router.get('/callback',
   passport.authenticate('google', {
+    //hard set link for now
     successRedirect: '/',
     failureRedirect: '/login'
   }));

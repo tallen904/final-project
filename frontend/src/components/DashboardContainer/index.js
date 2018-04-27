@@ -6,23 +6,22 @@ import EventAPI from '../../utils/EventAPI'
 import UserAPI from '../../utils/UserAPI'
 
 class DashboardContainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = { eventModalIsOpen: false,
-                   eventId: '',
-                   events: [],
-                   myEvents: [],
-                   username: "Tanner Sorensen",
-                   date: new Date().toString() 
-                  };
+    this.state = {
+      eventModalIsOpen: false,
+      eventId: "",
+      events: [],
+      myEvents: [],
+      username: "",
+      date: new Date().toLocaleString(),
+      newEvent: {}
+    };
   }
 
   componentDidMount() {
-    this.getUserInfo()
-    EventAPI.getEvents()
-    .then(res => {
-      this.setState({ events: res.data })
-    })
+    this.getUserInfo();
+    this.getAllEvents();
   }
 
   openEventModal = () => {
@@ -33,64 +32,95 @@ class DashboardContainer extends Component {
     this.setState({ eventModalIsOpen: false });
   };
 
+  pushEvent = data => {
+    let myEvents = this.state.myEvents
+    myEvents.push(data)
+    this.setState({ myEvents })
+  }
+
   getUserInfo = () => {
     UserAPI.getUser(this.props.userId).then(res => {
       this.setState({ username: res.data.name, myEvents: res.data.events });
-      let newEvents = this.state.myEvents
-      let pushEvents = [];
+      let newEvents = this.state.myEvents;
+      let myEvents = [];
       newEvents.map(eventId => {
-        EventAPI.getEvent(eventId).then(res => {
-          pushEvents.push(res.data)
-          this.setState({ myEvents: pushEvents })
-        })
-      })
+        return EventAPI.getEvent(eventId).then(res => {
+          myEvents.push(res.data);
+          this.setState({ myEvents });
+        });
+      });
     });
-  }
+  };
 
   getEvent = id => {
     EventAPI.getEvent(id).then(res => {
-      return res.data
-    })
-  }
+      return res.data;
+    });
+  };
 
-  // joinEvent = e => {
-  //   const eventId = e.target.dataset.id
-  //   EventAPI.getEvent(eventId).then(res => {
-  //     console.log(res.data)
-  //     UserAPI.updateUser(this.props.userId, eventId).then(res => {
-  //       console.log(res)
-  //     })
-  //   })
-  // }
+  getAllEvents = () => {
+    EventAPI.getEvents().then(res => {
+      let upcomingEvents = [];
+      let myEvents = [];
+      res.data.map((event, i) => {
+        if (this.state.myEvents.includes(event._id)) {
+          return;
+        } else {
+          upcomingEvents.push(event);
+          myEvents.splice(i, 1);
+          return;
+        }
+      });
+      this.setState({ events: upcomingEvents, myEvents });
+    });
+  };
 
   joinEvent = e => {
-    const eventId = e.target.dataset.id
-    EventAPI.getEvent(eventId).then(res => {
-      console.log(res)
-      let newEventId = res.data._id
-      UserAPI.updateUser(this.props.userId, { events : newEventId }).then(res => {
-        console.log(res)
-      })
+    const eventId = e.target.dataset.id;
+    UserAPI.updateUser(this.props.userId, { events: eventId }).then(res => {
+      this.getUserInfo();
+      this.getAllEvents();
+    });
+  };
+
+  associateNewEvent = data => {
+    const eventId = data._id
+    UserAPI.updateUser(this.props.userId, { events: eventId }).then(res => {
+      this.getUserInfo();
+      this.getAllEvents();
     })
   }
 
   render() {
-    return <div className="dashboard-container">
+    return (
+      <div className="dashboard-container">
         <div className="callout success dashboard-heading">
-          <h5>Welcome back, {this.state.username}!</h5>
+          <h5>Welcome back, {this.state.username || ''}!</h5>
           <h6>Todays date: {this.state.date}</h6>
         </div>
         <div className="create-event-div">
-          <button onClick={this.openEventModal} className="button expand create-event-button">
+          <button
+            onClick={this.openEventModal}
+            className="expand create-event-button"
+          >
             Create New Event
           </button>
         </div>
         <div className="row align-center">
           <MyEvents myEvents={this.state.myEvents} heading="My Events" />
-          <UpcomingEvents joinEvent={this.joinEvent} events={this.state.events} heading="Upcoming Events" />
+          <UpcomingEvents
+            joinEvent={this.joinEvent}
+            events={this.state.events}
+            heading="Upcoming Events"
+          />
         </div>
-        <EventCreationModal eventModalIsOpen={this.state.eventModalIsOpen} closeEventModal={this.closeEventModal} />
-      </div>;
+        <EventCreationModal
+          associate={this.associateNewEvent}
+          eventModalIsOpen={this.state.eventModalIsOpen}
+          closeEventModal={this.closeEventModal}
+        />
+      </div>
+    );
   }
 }
 
