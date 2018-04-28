@@ -1,7 +1,7 @@
 import React from "react";
-import $ from "jquery";
-import Foundation from "foundation-sites";
 import EventAPI from "../../../../utils/EventAPI";
+import jquery from "jquery";
+const $ = (typeof window !== 'undefined') ? window.$ = window.jQuery = jquery : {}; // eslint-disable-line
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class EventForm extends React.Component {
   }
 
   componentDidMount() {
-    this.abide = new Foundation.Abide($("#event-form"), {
+    this.abide = new window.Foundation.Abide($("#event-form"), {
       liveValidate: false
     });
     this.form = $("#event-form");
