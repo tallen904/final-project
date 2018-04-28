@@ -26,8 +26,8 @@ const testCar = (id) => ({
 const testEvent = (carId) => ({
   name      : 'Test Event',
   time      : Date.now(),
-  location  : '32.852992, -117.182789',
-  car : carId
+  location  : '2370 Cardinal Drive, San Diego CA',
+  cars : [carId]
 })
 
 //clear out db state, then reseed

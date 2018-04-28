@@ -13,7 +13,6 @@ import EventAPI from "../../utils/EventAPI";
 import UserAPI from "../../utils/UserAPI";
 import CarAPI from "../../utils/CarAPI";
 
-import Geocode from "react-geocode";
 
 class EventContainer extends Component {
   constructor(props) {
@@ -25,65 +24,16 @@ class EventContainer extends Component {
       passengers: [],
       lat: 0,
       lng: 0,
-      isMarkerShown: false
-      }
     }
-
-  delayedShowMarker() {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true })
-    }, 3000)
-  }
-
-  handleMarkerClick () {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
-  }
-
-  setupPassengers = () => {
-    EventAPI.getEvent(this.props.eventId).then(res => {
-      this.setState({ event: res.data });
-      CarAPI.getCar(this.state.event.car).then(res => {
-        let driverId = res.data.driver;
-        this.setState({ driverId });
-      });
-      UserAPI.getUsers().then(res => {
-        let passengers = [];
-        res.data.map(user => {
-          user.events.map(event => {
-            if (user._id === this.state.driverId) {
-              return;
-            }
-            if (event === this.state.event._id) {
-              passengers.push(user._id);
-              return;
-            }
-          });
-        });
-        this.setState({ passengers });
-      });
-    });
-  }
 
   //for the events page
   componentDidMount() {
-    this.setupPassengers();
-    this.delayedShowMarker()
     //get event from db
     EventAPI.getEvent(this.props.eventId).then(res => {
       //based on response location, get the lat and lng for the address
-      return Geocode.fromAddress(res.data.location).then(response => {
-        const { lat, lng } = response.results[0].geometry.location;
-        //set the state based on event data and the lat and lng 
-        this.setState({
-          event : res.data,
-          lat : lat,
-          lng : lng,
-          isMarkerShown : true
-        })
-      }, error => {
-        console.error(error);
-      });
+      this.setState({
+        event : res.data,
+      })
     })
   }
 
@@ -102,16 +52,19 @@ class EventContainer extends Component {
 
               <div className="events-left-spacer space-color"></div>
             <div className="events-right-spacer space-color"></div>
-
-              <div className="events-item-sidebar events-content-formatevents-content-format content-color">
-                <Info event={this.state.event}/>  
-                <Map />
-              </div>
-              <div className="events-item-content content-color  events-content-format">
-                <Drivers drivers={['Kat', 'Kevin']} passengers={['Tanner', 'Justin', 'James']}/>
-                <Waitlist />
-              </div>
-            </div>; //return <div className="events-container-desktop">
+        <div className="events-item-sidebar">
+          <Map />
+          <Info event={this.state.event} />
+        </div>
+        <div className="events-item-content">
+          <Drivers
+            drivers={["Kat", "Kevin"]}
+            passengers={["Tanner", "Justin", "James"]}
+          />
+          <Waitlist />
+        </div>
+      </div>
+    ); //return <div className="events-container-desktop">
   }
 }
 

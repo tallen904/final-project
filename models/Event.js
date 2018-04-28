@@ -1,4 +1,9 @@
 const mongoose = require('mongoose');
+const geocoder = require('node-geocoder')({
+  provider : 'google',
+  apiKey : 'AIzaSyAwIze81UMw6T5ASTCAD0UWuMh3HlFY92o',
+  formatter : null
+});
 const Schema = mongoose.Schema;
 
 const newSchema = new Schema({
@@ -15,6 +20,13 @@ const newSchema = new Schema({
     type      : String,
     required  : true
   },
+  lat : {
+    type      : String
+  },
+  lng : {
+    type      : String
+  },
+  'cars' : [{
   'driver' : {
     type: String
   },
@@ -28,6 +40,14 @@ const newSchema = new Schema({
 
 //boilerplate for edit flags
 newSchema.pre('save', function(next){
+  geocoder.geocode(this.location)
+    .then(res => {
+      console.log('here')
+      //process location and set lat lng into model
+      this.lat = res.latitude,
+      this.lng = res.longitude
+    })
+    .catch(err => console.log(err))
   this.updatedAt = Date.now();
   next();
 });
