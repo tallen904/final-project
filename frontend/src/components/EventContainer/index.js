@@ -13,7 +13,6 @@ import EventAPI from "../../utils/EventAPI";
 import UserAPI from "../../utils/UserAPI";
 import CarAPI from "../../utils/CarAPI";
 
-
 class EventContainer extends Component {
   constructor(props) {
     super(props);
@@ -23,8 +22,9 @@ class EventContainer extends Component {
       driverId: "",
       passengers: [],
       lat: 0,
-      lng: 0,
-    }
+      lng: 0
+    };
+  }
 
   //for the events page
   componentDidMount() {
@@ -32,26 +32,24 @@ class EventContainer extends Component {
     EventAPI.getEvent(this.props.eventId).then(res => {
       //based on response location, get the lat and lng for the address
       this.setState({
-        event : res.data,
-      })
-    })
+        event: res.data
+      });
+    });
   }
 
   render() {
-    console.log(this.props.eventId)
+    return (
+      <div className="events-container-desktop">
+        <div className="events-item-title title-color events-title-container-desktop">
+          <Title title={this.state.event.name} />
+        </div>
 
-    return  <div className="events-container-desktop">
-              <div className="events-item-title title-color events-title-container-desktop">
-                <Title title={this.state.event.name} />
-               
-              </div>
+        <div className="events-item-title-left-spacer title-color" />
+        <div className="events-item-title-right-spacer title-color" />
+        <div className="events-item-title-bottom title-spacer-color" />
 
-                              <div className="events-item-title-left-spacer title-color"></div>
-              <div className="events-item-title-right-spacer title-color"></div>
-              <div className="events-item-title-bottom title-spacer-color"></div>
-
-              <div className="events-left-spacer space-color"></div>
-            <div className="events-right-spacer space-color"></div>
+        <div className="events-left-spacer space-color" />
+        <div className="events-right-spacer space-color" />
         <div className="events-item-sidebar">
           <Map />
           <Info event={this.state.event} />

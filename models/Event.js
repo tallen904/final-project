@@ -26,10 +26,6 @@ const newSchema = new Schema({
   lng : {
     type      : String
   },
-  'cars' : [{
-  'driver' : {
-    type: String
-  },
   'car' : {
     type      : Schema.Types.ObjectId,
     ref       : 'Car'
