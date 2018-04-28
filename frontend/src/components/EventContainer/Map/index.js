@@ -21,16 +21,37 @@ const MyMapComponent = compose(
   </GoogleMap>
 )
 
-//return the map component defined above
-const Map = ({ isMarkerShown, handleMarkerClick, lat, lng }) => {
-  return (
-    <MyMapComponent
-      isMarkerShown={isMarkerShown}
-      onMarkerClick={handleMarkerClick}
-      lat={lat}
-      lng={lng}
-    />
-  )
+class Map extends React.PureComponent {
+  state = {
+    isMarkerShown: false,
+  }
+
+  componentDidMount() {
+    this.delayedShowMarker()
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true })
+    }, 3000)
+  }
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
+  }
+
+  render() {
+    return (
+      <div className='content-container'>
+      <MyMapComponent
+        isMarkerShown={this.state.isMarkerShown}
+        onMarkerClick={this.handleMarkerClick}
+        className="content-container"
+      />
+      </div>
+    )
+  }
 }
 
 export default Map;

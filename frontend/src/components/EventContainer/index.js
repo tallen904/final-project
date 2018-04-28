@@ -57,34 +57,30 @@ class EventContainer extends Component {
   }
 
   render() {
-    return (
-      <div className="events-container-desktop">
-        <div className="events-item-title">
-          <Title title={this.state.event.name} />
-        </div>
+    console.log(this.props.eventId)
 
-        <div className="events-item-decision">
-          <Decision />
-          <Share />
-        </div>
+    return  <div className="events-container-desktop">
+              <div className="events-item-title title-color events-title-container-desktop">
+                <Title title={this.state.event.name} />
+               
+              </div>
 
-        <div className="events-item-sidebar">
-          <Map 
-            isMarkerShown={this.state.isMarkerShown}
-            lat={this.state.lat}
-            lng={this.state.lng}
-            />
-          <Info event={this.state.event} />
-        </div>
-        <div className="events-item-content">
-          <Drivers
-            drivers={["Kat", "Kevin"]}
-            passengers={["Tanner", "Justin", "James"]}
-          />
-          <Waitlist />
-        </div>
-      </div>
-    ); //return <div className="events-container-desktop">
+                              <div className="events-item-title-left-spacer title-color"></div>
+              <div className="events-item-title-right-spacer title-color"></div>
+              <div className="events-item-title-bottom title-spacer-color"></div>
+
+              <div className="events-left-spacer space-color"></div>
+            <div className="events-right-spacer space-color"></div>
+
+              <div className="events-item-sidebar events-content-formatevents-content-format content-color">
+                <Info event={this.state.event}/>  
+                <Map />
+              </div>
+              <div className="events-item-content content-color  events-content-format">
+                <Drivers drivers={['Kat', 'Kevin']} passengers={['Tanner', 'Justin', 'James']}/>
+                <Waitlist />
+              </div>
+            </div>; //return <div className="events-container-desktop">
   }
 }
 
