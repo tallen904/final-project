@@ -2,6 +2,7 @@ import React from "react";
 import $ from "jquery";
 import Foundation from "foundation-sites";
 import EventAPI from "../../../../utils/EventAPI";
+import CarAPI from "../../../../utils/CarAPI"
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class EventForm extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.abide = new Foundation.Abide($("#event-form"), {
       liveValidate: false
     });
@@ -44,20 +46,25 @@ class EventForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { eventLocation, eventCity, eventState, eventZipcode} = this.state
+    const { eventLocation, eventCity, eventState, eventZipcode } = this.state
     const eventAddress = `${eventLocation} ${eventCity}, ${eventState} ${eventZipcode}`
-    console.log(eventAddress)
-    EventAPI.createEvent({
-      name: this.state.name,
-      location: eventAddress,
-      time: this.state.eventDate,
-      meetupLocation: this.state.meetupLocation,
-      meetupDate: this.state.meetupDate,
-      numSeats: this.state.numSeats
+    CarAPI.createCar({
+      seats: this.state.numSeats,
+      driver: this.props.userId
     }).then(res => {
-      this.props.associate(res.data)
-      this.props.closeModal();
-    });
+      EventAPI.createEvent({
+        name: this.state.name,
+        location: eventAddress,
+        time: this.state.eventDate,
+        meetupLocation: this.state.meetupLocation,
+        meetupDate: this.state.meetupDate,
+        driver: this.props.userId,
+        cars: res.data._id
+      }).then(res => {
+        this.props.associate(res.data)
+        this.props.closeModal();
+      });
+    })
   };
 
   onChange = e => {

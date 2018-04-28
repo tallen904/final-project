@@ -1,4 +1,4 @@
-import  React, { Component } from "react";
+import React, { Component } from "react";
 
 import Calendar from "./Calendar";
 import Decision from "./Decision";
@@ -9,7 +9,9 @@ import Share from "./Share";
 import Title from "./Title";
 import Waitlist from "./Waitlist";
 
-import EventAPI from '../../utils/EventAPI'
+import EventAPI from "../../utils/EventAPI";
+import UserAPI from "../../utils/UserAPI";
+import CarAPI from "../../utils/CarAPI";
 
 import Geocode from "react-geocode";
 
@@ -18,11 +20,14 @@ class EventContainer extends Component {
     super(props);
     this.state = {
       event: {},
+      users: [],
+      driverId: "",
+      passengers: [],
       lat: 0,
       lng: 0,
       isMarkerShown: false
+      }
     }
-  }
 
   delayedShowMarker() {
     setTimeout(() => {
@@ -35,8 +40,34 @@ class EventContainer extends Component {
     this.delayedShowMarker()
   }
 
+  setupPassengers = () => {
+    EventAPI.getEvent(this.props.eventId).then(res => {
+      this.setState({ event: res.data });
+      CarAPI.getCar(this.state.event.car).then(res => {
+        let driverId = res.data.driver;
+        this.setState({ driverId });
+      });
+      UserAPI.getUsers().then(res => {
+        let passengers = [];
+        res.data.map(user => {
+          user.events.map(event => {
+            if (user._id === this.state.driverId) {
+              return;
+            }
+            if (event === this.state.event._id) {
+              passengers.push(user._id);
+              return;
+            }
+          });
+        });
+        this.setState({ passengers });
+      });
+    });
+  }
+
   //for the events page
   componentDidMount() {
+    this.setupPassengers();
     this.delayedShowMarker()
     //get event from db
     EventAPI.getEvent(this.props.eventId).then(res => {

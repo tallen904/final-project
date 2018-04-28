@@ -10,7 +10,7 @@ module.exports = () => {
     switch (path) {
       case '/db/user':
         //populates all of the events the user belongs to
-        return db.User.findById(req.params.id).populate('events').then(userWithEvents => res.json(userWithEvents))
+        return db.User.find().then(users => res.json(users))
       case '/db/car':
         //populates all of the riders in a cars
         return db.Car.findById(req.params.id).populate('riders').then(carWithRiders => res.json(carWithRiders))
