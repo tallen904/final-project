@@ -1,5 +1,5 @@
 import React from "react";
-import pic from './map.jpg';
+import pic from './map.JPG';
 
 const Map = () => (
   <img src={pic} />
