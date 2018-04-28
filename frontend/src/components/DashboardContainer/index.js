@@ -107,7 +107,10 @@ class DashboardContainer extends Component {
           </button>
         </div>
         <div className="row align-center">
-          <MyEvents myEvents={this.state.myEvents} heading="My Events" />
+          <MyEvents
+            myEvents={this.state.myEvents}
+            heading="My Events"
+            userId={this.props.userId} />
           <UpcomingEvents
             joinEvent={this.joinEvent}
             events={this.state.events}
@@ -118,6 +121,7 @@ class DashboardContainer extends Component {
           associate={this.associateNewEvent}
           eventModalIsOpen={this.state.eventModalIsOpen}
           closeEventModal={this.closeEventModal}
+          userId={this.props.userId}
         />
       </div>
     );

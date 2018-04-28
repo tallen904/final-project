@@ -10,6 +10,18 @@
     padding: 0;
 }
 
+.driver-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-event {
+    color: black;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
 .dashboard-container {
     border-radius: $global-radius;
     margin-left: 10vw;
@@ -62,8 +74,6 @@
         margin-right: 2.5%
     }
 }
-
-
 
 
 
