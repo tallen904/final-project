@@ -1,8 +1,9 @@
+const path = require('path')
 const express = require('express')
 const router = express.Router()
 
-router.use('/', require('./home'))
-
-router.use('/login', require('./login'))
+router.use('/', (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+})
 
 module.exports = router
