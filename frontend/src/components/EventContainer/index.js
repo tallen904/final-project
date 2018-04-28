@@ -29,22 +29,24 @@ class EventContainer extends Component {
     console.log(this.props.eventId)
 
     return  <div className="events-container-desktop">
-              <div className="events-item-title">
+              <div className="events-item-title title-color events-title-container-desktop">
                 <Title title={this.state.event.name} />
                
               </div>
 
-              <div className='events-item-decision'>
-                 <Decision />
-                <Share />
-              </div>
+                              <div className="events-item-title-left-spacer title-color"></div>
+              <div className="events-item-title-right-spacer title-color"></div>
+              <div className="events-item-title-bottom title-spacer-color"></div>
 
-              <div className="events-item-sidebar">
+              <div className="events-left-spacer space-color"></div>
+            <div className="events-right-spacer space-color"></div>
+
+              <div className="events-item-sidebar events-content-formatevents-content-format content-color">
                 
                 <Map />
                 <Info event={this.state.event}/>
               </div>
-              <div className="events-item-content">
+              <div className="events-item-content content-color  events-content-format">
                 <Drivers drivers={['Kat', 'Kevin']} passengers={['Tanner', 'Justin', 'James']}/>
                 <Waitlist />
               </div>
