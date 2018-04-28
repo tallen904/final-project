@@ -27,9 +27,13 @@ const newSchema = new Schema({
     type      : String
   },
   'cars' : [{
+  'driver' : {
+    type: String
+  },
+  'car' : {
     type      : Schema.Types.ObjectId,
     ref       : 'Car'
-  }],
+  },
   'createdAt': { type: Date, default: Date.now },
   'updatedAt': { type: Date, default: Date.now }
 });

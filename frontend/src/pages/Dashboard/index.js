@@ -6,7 +6,6 @@ import DashboardContainer from '../../components/DashboardContainer'
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {

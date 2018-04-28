@@ -1,20 +1,22 @@
 .page-footer {
     background: black;
-    height: 15vh;
+    height: 8vh;
     width: 100%;
     color: white;
     .footer-menu {
         list-style: none;
         display: flex;
         justify-content: center;
+        align-items: center;
         padding: 0;
         .footer-menu-item {
-            padding: 10px;
+            padding: 15px;
         }
     }
     .copyright-text {
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 }
 

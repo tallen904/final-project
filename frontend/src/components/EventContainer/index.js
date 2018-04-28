@@ -1,4 +1,4 @@
-import  React, { Component } from "react";
+import React, { Component } from "react";
 
 import Calendar from "./Calendar";
 import Decision from "./Decision";
@@ -9,7 +9,9 @@ import Share from "./Share";
 import Title from "./Title";
 import Waitlist from "./Waitlist";
 
-import EventAPI from '../../utils/EventAPI'
+import EventAPI from "../../utils/EventAPI";
+import UserAPI from "../../utils/UserAPI";
+import CarAPI from "../../utils/CarAPI";
 
 
 class EventContainer extends Component {
@@ -17,10 +19,12 @@ class EventContainer extends Component {
     super(props);
     this.state = {
       event: {},
+      users: [],
+      driverId: "",
+      passengers: [],
       lat: 0,
       lng: 0,
     }
-  }
 
   //for the events page
   componentDidMount() {
@@ -34,17 +38,20 @@ class EventContainer extends Component {
   }
 
   render() {
-    return (
-      <div className="events-container-desktop">
-        <div className="events-item-title">
-          <Title title={this.state.event.name} />
-        </div>
+    console.log(this.props.eventId)
 
-        <div className="events-item-decision">
-          <Decision />
-          <Share />
-        </div>
+    return  <div className="events-container-desktop">
+              <div className="events-item-title title-color events-title-container-desktop">
+                <Title title={this.state.event.name} />
+               
+              </div>
 
+                              <div className="events-item-title-left-spacer title-color"></div>
+              <div className="events-item-title-right-spacer title-color"></div>
+              <div className="events-item-title-bottom title-spacer-color"></div>
+
+              <div className="events-left-spacer space-color"></div>
+            <div className="events-right-spacer space-color"></div>
         <div className="events-item-sidebar">
           <Map />
           <Info event={this.state.event} />

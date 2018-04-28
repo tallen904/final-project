@@ -14,6 +14,7 @@ class EventCreationModal extends React.Component {
           <EventForm
             associate={this.props.associate}
             closeModal={this.props.closeEventModal}
+            userId={this.props.userId}
           />
         </Modal>
       </div>;

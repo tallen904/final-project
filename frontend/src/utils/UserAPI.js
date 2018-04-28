@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   // Gets all users
   getUsers: function() {
-    return axios.get("/db/user");
+    return axios.get("/db/user/all");
   },
   // Gets the user with the given id
   getUser: function(id) {

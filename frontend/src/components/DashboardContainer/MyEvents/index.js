@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const MyEvents = props => {
     const isDriver = event => {
         const iconStyle = { width: "50px", height: "50px" };
-        if (event.driver) {
+        if (event.driver === props.userId) {
           return <img style={iconStyle} alt='driver' data-tooltip aria-haspopup="true" className="has-tip" data-disable-hover="false" tabIndex="1" title="You are a driver for this event." src="http://icons.iconarchive.com/icons/icons8/android/256/Transport-Car-icon.png" />;
         } else if (!event.driver) {
           return <img style={iconStyle} alt="passenger" data-tooltip aria-haspopup="true" className="has-tip" data-disable-hover="false" tabIndex="1" title="You are a passenger for this event." src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png" />;
@@ -17,19 +17,21 @@ const MyEvents = props => {
         </div>
         <div className="card-section">
           {props.myEvents.map((event, i) => {
-            const style = { color: "black", borderBottom: "1px solid black", width: "100%" };
-            const iconDivStyle = { display: 'flex', justifyContent: 'space-between' };
-            return (
-                <div key={i} style={style}>
-                  <h4>{event.name}</h4>
-                  <div style={iconDivStyle}>
-                    <p>{event.date}</p>
+            return <div key={i} className="my-event" >
+                <h4>{event.name}</h4>
+                <p>{event.time}</p>
+                <p>{event.location}</p>
+                <div className="row">
+                  <div className="small-9">
+                    <Link className="button" to={`/event/${event._id}`}>
+                      Event Details
+                    </Link>
+                  </div>
+                  <div className="small-2 driver-icon">
                     {isDriver(event)}
                   </div>
-                  <p>{event.location}</p>
-                  <Link className='button' to={`/event/${event._id}`}>Event Details</Link>
                 </div>
-            )
+              </div>;
           })}
         </div>
       </div>;
