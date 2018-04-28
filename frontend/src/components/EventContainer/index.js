@@ -42,9 +42,8 @@ class EventContainer extends Component {
             <div className="events-right-spacer space-color"></div>
 
               <div className="events-item-sidebar events-content-formatevents-content-format content-color">
-                
+                <Info event={this.state.event}/>  
                 <Map />
-                <Info event={this.state.event}/>
               </div>
               <div className="events-item-content content-color  events-content-format">
                 <Drivers drivers={['Kat', 'Kevin']} passengers={['Tanner', 'Justin', 'James']}/>
