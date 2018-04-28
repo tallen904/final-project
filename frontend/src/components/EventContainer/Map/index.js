@@ -1,6 +1,7 @@
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from "react";
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import Geocode from "react-geocode";
 
 const MyMapComponent = compose(
   withProps({
@@ -11,12 +12,12 @@ const MyMapComponent = compose(
   }),
   withScriptjs,
   withGoogleMap
-)((props) =>
+)(({isMarkerShown, handleMarkerClick, lat, lng}) =>
   <GoogleMap
     defaultZoom={10}
-    defaultCenter={{ lat: 32.8278001, lng: -117.1485465 }}
+    defaultCenter={(lat && lng) ? {lat: lat, lng: lng} : { lat: 32.8278001, lng: -117.1485465 }}
   >
-    {props.isMarkerShown && <Marker position={{ lat: 32.8278001, lng: -117.1485465 }} onClick={props.onMarkerClick} />}
+    {isMarkerShown && <Marker position={{ lat: lat, lng: lng }} onClick={handleMarkerClick} />}
   </GoogleMap>
 )
 
@@ -42,10 +43,13 @@ class Map extends React.PureComponent {
 
   render() {
     return (
+      <div className='content-container'>
       <MyMapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
+        className="content-container"
       />
+      </div>
     )
   }
 }
