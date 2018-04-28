@@ -42,11 +42,13 @@ class Map extends React.PureComponent {
 
   render() {
     return (
+      <div className='content-container'>
       <MyMapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
         className="content-container"
       />
+      </div>
     )
   }
 }
