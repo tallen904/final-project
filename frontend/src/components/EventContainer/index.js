@@ -11,7 +11,6 @@ import Waitlist from "./Waitlist";
 
 import EventAPI from '../../utils/EventAPI'
 
-import Geocode from "react-geocode";
 
 class EventContainer extends Component {
   constructor(props) {
@@ -20,39 +19,17 @@ class EventContainer extends Component {
       event: {},
       lat: 0,
       lng: 0,
-      isMarkerShown: false
     }
-  }
-
-  delayedShowMarker() {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true })
-    }, 3000)
-  }
-
-  handleMarkerClick () {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
   }
 
   //for the events page
   componentDidMount() {
-    this.delayedShowMarker()
     //get event from db
     EventAPI.getEvent(this.props.eventId).then(res => {
       //based on response location, get the lat and lng for the address
-      return Geocode.fromAddress(res.data.location).then(response => {
-        const { lat, lng } = response.results[0].geometry.location;
-        //set the state based on event data and the lat and lng 
-        this.setState({
-          event : res.data,
-          lat : lat,
-          lng : lng,
-          isMarkerShown : true
-        })
-      }, error => {
-        console.error(error);
-      });
+      this.setState({
+        event : res.data,
+      })
     })
   }
 
@@ -69,11 +46,7 @@ class EventContainer extends Component {
         </div>
 
         <div className="events-item-sidebar">
-          <Map 
-            isMarkerShown={this.state.isMarkerShown}
-            lat={this.state.lat}
-            lng={this.state.lng}
-            />
+          <Map />
           <Info event={this.state.event} />
         </div>
         <div className="events-item-content">
