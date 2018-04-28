@@ -6791,6 +6791,7 @@ button.button {
   padding: 0; }
 
 .dashboard-container {
+  border-radius: 6px;
   margin-left: 10vw;
   margin-right: 10vw;
   margin-top: 5vh;
@@ -6798,6 +6799,8 @@ button.button {
   background-color: #f7f7f7;
   border: 2px solid black; }
   .dashboard-container .dashboard-heading {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     display: flex;
     justify-content: space-between; }
   .dashboard-container .create-event-div {
